@@ -5,7 +5,7 @@
 
 ----
 
-__Tools used : Excel,MS SQL Server,Power BI__
+__Tools used : Excel,MYSQL Server,Power BI__
 
 [Dataset used](https://1drv.ms/x/s!AmKU00K1sOXkiXYGCmYAQfrCOGMJ?e=lz8diP)
 
