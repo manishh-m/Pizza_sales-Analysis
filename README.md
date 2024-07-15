@@ -73,31 +73,9 @@ identifying trends in customer behavior. It provides a basis for assessing busin
 Average pizzas per order indicates the average quantity of pizzas purchased in each transaction. This metric offers insights into customer preferences and 
 ordering behavior. Higher average pizzas per order may indicate upselling opportunities or popular menu items.
     
-__2) Daily Trend for Total Orders__
-
-        	SELECT DAYNAME(STR_TO_DATE(order_date, '%d-%m-%Y')) AS order_day, COUNT(DISTINCT order_id) AS total_orders
-			    FROM pizza_sales
-			    GROUP BY DAYNAME(STR_TO_DATE(order_date, '%d-%m-%Y'));
-       
-Note: the data is in dd-mm-yyyy format but mysql stores it in yyyy-mm-dd format, so convert that and then query for results.
-        
-![image](https://github.com/notmanishh/Pizza_sales-Analysis/assets/106374799/f372c5b4-5311-44af-8c77-cb98a7d4aef7)
 
 
-By analyzing the daily trend of total orders over a specific time period, we can identify patterns and fluctuations in order volumes on a daily basis. This 
-helps in understanding the demand patterns throughout the week or month, enabling better inventory management and resource allocation.
-
- __3) Monthly Trend for Orders__
-
-        	SELECT MONTHNAME(STR_TO_DATE(order_date, '%d-%m-%Y')) AS order_day, COUNT(DISTINCT order_id) AS total_orders
-				FROM pizza_sales
-				GROUP BY MONTHNAME(STR_TO_DATE(order_date, '%d-%m-%Y'));
-
-![image](https://github.com/notmanishh/Pizza_sales-Analysis/assets/106374799/8ff93461-ca09-4608-a07e-b167d5f99100)
-
-The monthly trend of total orders offers insights into the overall order activity throughout the month. Identifying peak periods of high order activity can aid in resource allocation, production planning, and promotional efforts. By recognizing monthly trends, businesses can adjust their operations to capitalize on high-demand periods and optimize efficiency during slower periods.
-
-__4) % of Sales by Pizza Category__
+ % of Sales by Pizza Category__
 
         			select pizza_category, sum(total_price)*100 / (select sum(total_price) from pizza_sales where month(STR_TO_DATE(order_date, '%d-%m-%Y'))=1) as total_Sales_percentage from pizza_sales
 			        where month(STR_TO_DATE(order_date, '%d-%m-%Y'))=1
