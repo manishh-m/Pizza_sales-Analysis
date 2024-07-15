@@ -74,33 +74,6 @@ Average pizzas per order indicates the average quantity of pizzas purchased in e
 ordering behavior. Higher average pizzas per order may indicate upselling opportunities or popular menu items.
     
 
-
- % of Sales by Pizza Category__
-
-        			select pizza_category, sum(total_price)*100 / (select sum(total_price) from pizza_sales where month(STR_TO_DATE(order_date, '%d-%m-%Y'))=1) as total_Sales_percentage from pizza_sales
-			        where month(STR_TO_DATE(order_date, '%d-%m-%Y'))=1
-			        group by pizza_category
-           
-NOTE: here we have are getting percentage of sales of a pizza category for the month of january,ie, 1
-
-![image](https://github.com/notmanishh/Pizza_sales-Analysis/assets/106374799/879d3857-9e29-40a1-ac31-61c79c9783a3)
-
-
-The distribution of sales across different pizza categories helps in understanding the popularity of each category and its contribution to overall sales. This 
-insight informs menu optimization strategies, marketing campaigns, and inventory management decisions to maximize revenue and customer satisfaction.
-
- __5) % of Sales by Pizza Size__
-
-        			select pizza_size, sum(total_price)*100 / (select sum(total_price) from pizza_sales where month(STR_TO_DATE(order_date, '%d-%m-%Y'))=1) as total_Sales_percentage from pizza_sales
-			        where month(STR_TO_DATE(order_date, '%d-%m-%Y'))=1
-			        group by pizza_size
-
-![image](https://github.com/notmanishh/Pizza_sales-Analysis/assets/106374799/82be72c7-ddc2-498c-ab39-b1182f5856a1)
-
-
-The chart depicting the percentage of sales attributed to different pizza sizes provides insights into customer preferences regarding pizza size. 
-Understanding these preferences allows for better inventory management and menu optimization to meet customer demand effectively.
-
 __6) Total Pizzas Sold by Pizza Category__
 
         		select pizza_category, sum(quantity) as total_quantity from pizza_sales
